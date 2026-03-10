@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campaign for Montana Senate – District 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2e4a;
+    --gold: #c8922a;
+    --gold-light: #e8b050;
+    --cream: #f7f3ee;
+    --text: #2c2c2c;
+    --muted: #6b7280;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,46,74,0.97);
+    backdrop-filter: blur(8px);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 5%;
+    height: 68px;
+    border-bottom: 3px solid var(--gold);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-donate {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 3px;
+    font-weight: 700 !important;
+  }
+  .nav-donate:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--navy) 0%, #0f1e33 55%, #1a3a2a 100%);
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 60 L30 0 L60 60 Z' fill='rgba(200,146,42,0.03)'/%3E%3C/svg%3E") repeat;
+    opacity: 0.4;
+  }
+  /* Mountain silhouette */
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 220px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,220 0,140 120,60 280,120 400,30 600,110 720,20 880,90 1050,10 1200,80 1340,30 1440,70 1440,220' fill='rgba(247,243,238,0.06)'/%3E%3Cpolygon points='0,220 0,180 200,100 420,160 600,70 820,140 1000,50 1200,130 1440,90 1440,220' fill='rgba(247,243,238,0.04)'/%3E%3C/svg%3E") no-repeat bottom;
+    background-size: cover;
+  }
+  .hero-content { max-width: 700px; position: relative; z-index: 2; }
+  .hero-eyebrow {
+    color: var(--gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 36px; height: 2px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.0;
+    margin-bottom: 0.4rem;
+    font-weight: 900;
+  }
+  .hero h1 .accent { color: var(--gold); }
+  .hero-office {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.15rem;
+    margin-bottom: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+  .hero-tagline {
+    color: rgba(255,255,255,0.92);
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 560px;
+    border-left: 3px solid var(--gold);
+    padding-left: 1.2rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.5);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  /* SECTIONS */
+  section { padding: 90px 5%; }
+  .section-label {
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-label::after { content: ''; flex: 1; max-width: 40px; height: 1.5px; background: var(--gold); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+  }
+  .section-title.light { color: var(--white); }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .about-img-block {
+    position: relative;
+  }
+  .about-img-placeholder {
+    width: 100%; padding-bottom: 120%;
+    background: linear-gradient(135deg, var(--navy) 0%, #2a4a6a 100%);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-img-placeholder::after {
+    content: 'YOUR PHOTO HERE';
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+  .about-accent {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 120px; height: 120px;
+    background: var(--gold);
+    border-radius: 4px;
+    z-index: -1;
+  }
+  .about-text p {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text);
+    margin-bottom: 1.4rem;
+  }
+  .about-text p strong { color: var(--navy); }
+  .about-credentials {
+    display: flex; flex-direction: column; gap: 0.7rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(26,46,74,0.12);
+  }
+  .credential {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.95rem; font-weight: 600; color: var(--navy);
+  }
+  .credential::before {
+    content: '▸'; color: var(--gold); font-size: 0.8rem;
+  }
+
+  /* ISSUES */
+  .issues { background: var(--cream); }
+  .issues-intro { max-width: 640px; margin-bottom: 3.5rem; }
+  .issues-intro p { font-size: 1.1rem; line-height: 1.8; color: var(--muted); }
+  .issues-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .issue-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 2.5rem;
+    border-top: 4px solid var(--gold);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .issue-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+  .issue-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .issue-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--navy);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .issue-card p {
+    color: var(--muted);
+    line-height: 1.75;
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+  }
+  .issue-card ul {
+    list-style: none; padding: 0;
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .issue-card li {
+    font-size: 0.9rem;
+    color: var(--navy);
+    font-weight: 600;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .issue-card li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
+
+  /* QUOTE STRIPE */
+  .quote-stripe {
+    background: var(--navy);
+    padding: 80px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-stripe::before {
+    content: '"';
+    position: absolute;
+    top: -30px; left: 5%;
+    font-family: 'Playfair Display', serif;
+    font-size: 20rem;
+    color: rgba(200,146,42,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .quote-stripe blockquote {
+    max-width: 800px; margin: 0 auto;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .quote-stripe blockquote em { color: var(--gold); font-style: normal; }
+  .quote-attribution {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* GET INVOLVED */
+  .get-involved { background: var(--white); }
+  .get-involved-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; max-width: 1000px; margin: 0 auto; }
+  .volunteer-form h3, .donate-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+  .volunteer-form p, .donate-block p {
+    color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 1.8rem;
+  }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid rgba(26,46,74,0.2);
+    border-radius: 3px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--cream);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--navy);
+    background: var(--white);
+  }
+  .form-submit {
+    background: var(--navy);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold); color: var(--navy); }
+  .donate-block {
+    border-left: 3px solid var(--gold);
+    padding-left: 2.5rem;
+  }
+  .donate-amounts {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .amount-btn {
+    border: 2px solid var(--navy);
+    background: transparent;
+    color: var(--navy);
+    padding: 0.8rem;
+    border-radius: 3px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .amount-btn:hover, .amount-btn.active { background: var(--navy); color: var(--white); }
+  .btn-donate-main {
+    display: block;
+    background: var(--gold);
+    color: var(--navy);
+    text-align: center;
+    padding: 1.1rem;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+  }
+  .btn-donate-main:hover { background: var(--gold-light); }
+  .donate-disclaimer {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0e1a2b;
+    color: rgba(255,255,255,0.6);
+    padding: 50px 5% 30px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-tagline { color: rgba(255,255,255,0.4); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .footer-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 1.5rem 0; }
+  .footer-legal { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .about-grid, .get-involved-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .donate-block { border-left: none; border-top: 3px solid var(--gold); padding-left: 0; padding-top: 2rem; }
+    .nav-links { display: none; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero h1 { animation: fadeUp 0.6s ease 0.25s both; }
+  .hero-office { animation: fadeUp 0.6s ease 0.35s both; }
+  .hero-tagline { animation: fadeUp 0.6s ease 0.45s both; }
+  .hero-actions { animation: fadeUp 0.6s ease 0.55s both; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">[YOUR NAME] <span>for Montana</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#issues">Issues</a></li>
+    <li><a href="#involved">Get Involved</a></li>
+    <li><a href="#involved" class="nav-donate">Donate</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Montana Senate · District 6 · Democrat</div>
+    <h1>[YOUR NAME]<br><span class="accent">for Senate</span></h1>
+    <p class="hero-office">Montana State Senate · District 6</p>
+    <p class="hero-tagline">
+      Born and raised here. Built things with his hands. Served this country. 
+      Now fighting to bring Montana back to the middle — where neighbors 
+      look out for neighbors.
+    </p>
+    <div class="hero-actions">
+      <a href="#involved" class="btn-primary">Donate Now</a>
+      <a href="#involved" class="btn-outline">Volunteer</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img-block">
+      <div class="about-img-placeholder"></div>
+      <div class="about-accent"></div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">About</div>
+      <h2 class="section-title">A Montana Life,<br>Built from the Ground Up</h2>
+      <p>
+        I grew up here. I worked as a contractor, building beautiful kitchens 
+        and bathrooms across this valley — always dreaming of my own little 
+        piece of paradise someday. For years, that dream felt just out of reach.
+      </p>
+      <p>
+        I went on active duty at 37 and served this country with honor. 
+        When the time came to decide where to settle, my wife and I knew — 
+        Montana. We found a little cabin on the river in 2018. 
+        <strong>We could never afford to buy that same place today.</strong> 
+        That's not right. And it's why I'm running.
+      </p>
+      <p>
+        I remember a Montana where we didn't know — or care — what our 
+        neighbor's political party was. We just lived here, together. 
+        I want that Montana back. And I believe most of us do.
+      </p>
+      <div class="about-credentials">
+        <div class="credential">U.S. Navy Veteran · Active Duty Service</div>
+        <div class="credential">Lifelong Montana Resident</div>
+        <div class="credential">Skilled Tradesman · Small Business Owner</div>
+        <div class="credential">Democrat · District 6 Candidate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ISSUES -->
+<section class="issues" id="issues">
+  <div class="issues-intro">
+    <div class="section-label">The Issues</div>
+    <h2 class="section-title">What I'm Fighting For</h2>
+    <p>
+      These aren't liberal or conservative priorities — they're Montana 
+      priorities. Roads, healthcare, housing, and good schools belong to 
+      all of us.
+    </p>
+  </div>
+  <div class="issues-grid">
+
+    <div class="issue-card">
+      <span class="issue-icon">🏡</span>
+      <h3>Affordable Housing</h3>
+      <p>
+        Montana now has among the least affordable housing markets in the country. 
+        Median home prices have nearly doubled since 2018. Families who built this 
+        state are being priced out of it. That has to stop.
+      </p>
+      <ul>
+        <li>Fund the housing trust established in 2025 session</li>
+        <li>Streamline permitting for workforce housing</li>
+        <li>Protect renters with fair notice and anti-gouging measures</li>
+        <li>Expand homebuyer assistance for working families</li>
+      </ul>
+    </div>
+
+    <div class="issue-card">
+      <span class="issue-icon">🏥</span>
+      <h3>Healthcare Access</h3>
+      <p>
+        Too many Montanans ration medications, skip appointments, or go bankrupt 
+        from a single health emergency. With federal ACA subsidies at risk, 
+        the state must step up to protect coverage.
+      </p>
+      <ul>
+        <li>Protect and strengthen Medicaid expansion</li>
+        <li>Support state-level reinsurance to lower premiums</li>
+        <li>Expand rural telehealth and clinic access</li>
+        <li>Prescription drug transparency and cost controls</li>
+      </ul>
+    </div>
+
+    <div class="issue-card">
+      <span class="issue-icon">💼</span>
+      <h3>Economic Opportunity</h3>
+      <p>
+        Hard work should pay off in Montana. Wages aren't keeping pace with 
+        the cost of living, and too many families are making impossible 
+        choices every month.
+      </p>
+      <ul>
+        <li>Support small businesses and local contractors</li>
+        <li>Invest in apprenticeships and trade training</li>
+        <li>Fight for fair wages that reflect real costs</li>
+        <li>Oppose tax giveaways that blow budget holes</li>
+      </ul>
+    </div>
+
+    <div class="issue-card">
+      <span class="issue-icon">🤝</span>
+      <h3>Bipartisan Leadership</h3>
+      <p>
+        In the last session, nine Republican senators were sanctioned and 
+        marginalized for having the courage to work across the aisle. 
+        That's not governance — that's tribalism. I'll fight for legislation 
+        on merit, not party loyalty.
+      </p>
+      <ul>
+        <li>Find common ground on shared priorities</li>
+        <li>Resist the politics of outrage and division</li>
+        <li>Hold leadership accountable to voters, not donors</li>
+        <li>Represent the middle — where most Montanans live</li>
+      </ul>
+    </div>
+
+    <div class="issue-card">
+      <span class="issue-icon">🌲</span>
+      <h3>Public Lands & Environment</h3>
+      <p>
+        Montana's land, water, and wildlife aren't just beautiful — 
+        they're our economy. Hunting, fishing, ranching, and outdoor 
+        tourism depend on stewardship, not extraction.
+      </p>
+      <ul>
+        <li>Protect public access to public lands</li>
+        <li>Support sustainable water management</li>
+        <li>Oppose federal land transfers that limit access</li>
+        <li>Invest in wildfire prevention and recovery</li>
+      </ul>
+    </div>
+
+    <div class="issue-card">
+      <span class="issue-icon">🎓</span>
+      <h3>Education & Infrastructure</h3>
+      <p>
+        Strong schools and reliable roads are the foundation of every 
+        Montana community. Both have been underfunded for too long 
+        while the bill gets passed to our kids.
+      </p>
+      <ul>
+        <li>Implement and fund the STARS Act teacher pay</li>
+        <li>Invest in rural broadband infrastructure</li>
+        <li>Fix bridges and roads before they fail</li>
+        <li>Fully fund Native American schools</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- QUOTE STRIPE -->
+<div class="quote-stripe">
+  <blockquote>
+    "I remember a Montana where we didn't know what our neighbor's 
+    political party was. <em>We just lived here, together.</em> 
+    I want that Montana back."
+  </blockquote>
+  <p class="quote-attribution">[YOUR NAME] · Candidate, Montana Senate District 6</p>
+</div>
+
+<!-- GET INVOLVED -->
+<section class="get-involved" id="involved">
+  <div style="max-width:1000px; margin:0 auto 3rem;">
+    <div class="section-label">Join the Campaign</div>
+    <h2 class="section-title">Let's Win This Together</h2>
+  </div>
+  <div class="get-involved-grid">
+
+    <!-- VOLUNTEER FORM -->
+    <div class="volunteer-form">
+      <h3>Volunteer</h3>
+      <p>
+        Campaigns are won by neighbors talking to neighbors. 
+        Whether you can knock doors, make calls, or just put a 
+        sign in your yard — every bit helps.
+      </p>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Jane Smith">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="jane@example.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(406) 555-0100">
+      </div>
+      <div class="form-group">
+        <label>How Can You Help?</label>
+        <select>
+          <option>Canvassing / Door-to-Door</option>
+          <option>Phone Banking</option>
+          <option>Yard Sign Placement</option>
+          <option>Event Hosting</option>
+          <option>Social Media Support</option>
+          <option>Other / Not Sure Yet</option>
+        </select>
+      </div>
+      <button class="form-submit">Sign Up to Volunteer</button>
+    </div>
+
+    <!-- DONATE BLOCK -->
+    <div class="donate-block">
+      <h3>Donate</h3>
+      <p>
+        Grassroots donations from District 6 neighbors power this campaign. 
+        Every dollar goes directly to reaching voters with our message.
+      </p>
+      <div class="donate-amounts">
+        <div class="amount-btn">$25</div>
+        <div class="amount-btn active">$50</div>
+        <div class="amount-btn">$100</div>
+        <div class="amount-btn">$250</div>
+      </div>
+      <a href="https://www.actblue.com" target="_blank" class="btn-donate-main">
+        Donate via ActBlue →
+      </a>
+      <p class="donate-disclaimer">
+        Contributions are not tax-deductible. Paid for by [Your Name] for 
+        Montana Senate. Contributions from foreign nationals are prohibited. 
+        By donating you certify you are a U.S. citizen or permanent resident 
+        making this contribution with your own personal funds.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">[YOUR Name] <span>for Montana</span></div>
+  <div class="footer-tagline">Montana Senate · District 6 · Democrat</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#issues">Issues</a>
+    <a href="#involved">Volunteer</a>
+    <a href="#involved">Donate</a>
+    <a href="#">Facebook</a>
+    <a href="#">Contact</a>
+  </div>
+  <hr class="footer-divider">
+  <p class="footer-legal">
+    Paid for by [Your Name] for Montana Senate · PO Box [XXX], [City], MT [ZIP]<br>
+    Not authorized by any candidate or candidate's committee other than [Your Name] for Montana Senate.
+  </p>
+</footer>
+
+<script>
+  // Donate amount button toggle
+  document.querySelectorAll('.amount-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+
+</body>
+</html>
